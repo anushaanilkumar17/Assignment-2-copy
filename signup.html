@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP PAGE</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://lh3.googleusercontent.com/xZ7QLCNX5fJgPoJj51Gu7Hg1V2S9Cn868qOLRxo8CF796g0UGT9sfuknn-Ejbw_fKBI">
+
+    <link rel="stylesheet" href="CSS/signup.css">
+</head>
+
+<body background="ALL IMAGES/signupbg 8.jpg">
+    
+    <header>
+        <img src="ALL IMAGES/signuplogo.png" alt="logo" height="60" width="80">
+    </header>
+    
+    <div class="container">
+        
+        <form action="login.html"  onsubmit=" return validate()">
+
+            <h3>Sign Up Here</h3><br>
+
+            <input id="name" type="text" placeholder="Full Name"><br>
+            <span id="names"></span>
+
+            <input type="text" placeholder="E-mail" id="email"><br>
+            <span id="emails"></span>
+
+            <input id="number" type="text" placeholder="Phone Number (Don't write country code +91)" id="number">
+            <span id="numbererror"></span><br>
+
+            <input id= "pwd" type="password" placeholder="Password"><br>
+            <span id="pwds"></span>
+            
+            <div class="progress" id="progs">
+              <div class="progress-bar" id="strength" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div id="strgts"></div><br>
+           
+            <input id="cnfpwd" type="Password" placeholder="Confirm Password" id="cnfpwd"><br>
+            <span id="cnfpwds"></span>
+
+            <input type="submit" placeholder="Create Account" class="signup-button"><br>
+            
+            <a href="login.html">Already Have an Account?</a><br><br>
+
+        </form>
+    
+    </div>
+    
+
+
+<!------------------------------------------JS Function(Validation )------------------------------------------------->
+
+        <script>
+            
+            function validate() {
+              let name = document.getElementById("name");
+              let email = document.getElementById("email");
+              let number = document.getElementById("number");
+              let pwd = document.getElementById("pwd");
+              let cnfpwd = document.getElementById("cnfpwd");
+            
+                   let numbercheck = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                
+//Name validation starts here//
+
+               if (name.value == ""){
+                document.getElementById('names').innerHTML = "**Please enter your name**";
+                document.getElementById('names').style.color = "red";
+                document.getElementById('names').style.fontSize = "12px";
+                document.getElementById('names').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+               else if (name.value.length<2){
+                document.getElementById('names').innerHTML = "**Please write more than one character**";
+                document.getElementById('names').style.color = "red";
+                document.getElementById('names').style.fontSize = "12px";
+                document.getElementById('names').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else if (!isNaN(name.value)){
+                document.getElementById('names').innerHTML = "**Please write alphabets only**";
+                document.getElementById('names').style.color = "red";
+                document.getElementById('names').style.fontSize = "12px";
+                document.getElementById('names').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else (name.value);{
+                document.getElementById('names').innerHTML = "";
+                }
+
+//Email validation starts here//
+
+
+                if (email.value == ""){
+                document.getElementById('emails').innerHTML = "**Please enter your Email ID**";
+                document.getElementById('emails').style.color = "red";
+                document.getElementById('emails').style.fontSize = "12px";
+                document.getElementById('emails').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+               else if (email.value.indexOf('@')<=0){
+                document.getElementById('emails').innerHTML = "**Invalid position of @**";
+                document.getElementById('emails').style.color = "red";
+                document.getElementById('emails').style.fontSize = "12px";
+                document.getElementById('emails').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else if (email.value.charAt(email.value.length - 4)!='.' && email.value.charAt(email.value.length - 3)!='.'){
+                document.getElementById('emails').innerHTML = "**Invalid position of .**";
+                document.getElementById('emails').style.color = "red";
+                document.getElementById('emails').style.fontSize = "12px";
+                document.getElementById('emails').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else (email.value);{
+                document.getElementById('emails').innerHTML = "";
+                }
+
+// Number Validation starts here//
+
+                if(numbercheck.test(number.value)){
+                document.getElementById('numbererror').innerHTML="";
+                }
+
+                else{
+                document.getElementById('numbererror').innerHTML="**Please enter a valid phone number**";
+                document.getElementById('numbererror').style.color = "red";
+                document.getElementById('numbererror').style.fontSize = "12px";
+                document.getElementById('numbererror').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+                return false;
+                }
+
+                // if (number.value == ""){
+                // document.getElementById('numbers').innerHTML = "**Please enter your phone number**";
+                // document.getElementById('numbers').style.color = "red";
+                // document.getElementById('numbers').style.fontSize = "12px";
+                // document.getElementById('numbers').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                // return false;
+                // }
+
+                // else if ((number.value.length <10) || (number.value.length >10)){
+                // document.getElementById('numbers').innerHTML = "**Required 10 digits**";
+                // document.getElementById('numbers').style.color = "red";
+                // document.getElementById('numbers').style.fontSize = "12px";
+                // document.getElementById('numbers').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                // return false;
+                // }
+
+                // else if (isNaN(number.value)){
+                // document.getElementById('numbers').innerHTML = "**Please enter numbers only**";
+                // document.getElementById('numbers').style.color = "red";
+                // document.getElementById('numbers').style.fontSize = "12px";
+                // document.getElementById('numbers').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                // return false;
+                // }
+                
+                // else (number.value);{
+                // document.getElementById('numbers').innerHTML = "";
+                // }
+
+    
+//Password validation starts here//
+
+
+                if (pwd.value == "") {
+                document.getElementById('pwds').innerHTML = " **Please enter a valid password**";
+                document.getElementById('pwds').style.color = "red";
+                document.getElementById('pwds').style.fontSize = "12px";
+                document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+                return false;
+                }
+
+                else if (pwd.value.length <8) {
+                document.getElementById('pwds').innerHTML = "*Minimum of 8 characters required*";
+                document.getElementById('pwds').style.color = "red";
+                document.getElementById('pwds').style.fontSize = "12px";
+                document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else if (pwd.value.search (/[0-9]/) ==-1) {
+                document.getElementById('pwds').innerHTML = " *Atleast one numeric character*";
+                document.getElementById('pwds').style.color = "red";
+                document.getElementById('pwds').style.fontSize = "12px";
+                document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else if (pwd.value.search (/[a-z]/) ==-1) {
+                document.getElementById('pwds').innerHTML = " *Atleast one lowercase character*";
+                document.getElementById('pwds').style.color = "red";
+                document.getElementById('pwds').style.fontSize = "12px";
+                document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else if (pwd.value.search (/[A-Z]/) ==-1) {
+                document.getElementById('pwds').innerHTML = " *Atleast one uppercase character*";
+                document.getElementById('pwds').style.color = "red";
+                document.getElementById('pwds').style.fontSize = "12px";
+                document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else if (pwd.value.search (/[!\@\#\$\%\^\&\*\?\-\_\>\<\.\,]/) ==-1) {
+                document.getElementById('pwds').innerHTML = " *Atleast one special character*";
+                document.getElementById('pwds').style.color = "red";
+                document.getElementById('pwds').style.fontSize = "12px";
+                document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                return false;
+                }
+
+                else (pwd.value);{
+                document.getElementById('pwds').innerHTML = "";
+                }
+
+
+//confirm-password validation starts here//
+
+                    if (cnfpwd.value == "") {
+                    document.getElementById('pwds').innerHTML = " **Please confirm your password**";
+                    document.getElementById('pwds').style.color = "red";
+                    document.getElementById('pwds').style.fontSize = "12px";
+                    document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+                    return false;
+                    }
+
+                    else if (pwd.value != cnfpwd.value){
+                    document.getElementById('cnfpwds').innerHTML = "**Password does not match**";
+                    document.getElementById('cnfpwds').style.color = "red";
+                    document.getElementById('cnfpwds').style.fontSize = "12px";
+                    document.getElementById('cnfpwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+                    return false;
+                    }
+
+                    else (cnfpwd.value);{
+                    document.getElementById('cnfpwds').innerHTML = "";
+                  
+                    }
+
+                    document.getElementById('pwds').innerHTML = " **Login Successfull**";
+                    document.getElementById('pwds').style.color = "green";
+                    document.getElementById('pwds').style.fontSize = "14px";
+                    return true;
+            }
+
+// Password Checker starts here //
+
+              let pass= document.getElementById('pwd');
+              pass.addEventListener('keyup',function(){
+              checkPassword(pwd.value)
+              })
+
+                        function checkPassword(password){
+
+                          var prog = document.getElementById('progs');
+                          var strengthBar = document.getElementById('strength');
+                          var strength=0;
+
+                          if(password.match(/[a-z]/))
+                          {
+                            strength += 1;
+                        
+                          }
+                          if((password.length>=6)&&(password.match(/[!\@\#\$\%\^\&\*\?\-\_\>\<\.\,]/)))
+                          {
+                            strength += 1;
+                        
+                          }
+                      
+                          if((password.length>=8)&&(password.match(/[a-z]/))&&(password.match(/[A-Z]/))&&(password.match(/[0-9]/)))
+                          {
+                            strength += 1;
+                        
+                          }
+                          switch(strength)
+                          {
+                            case 0: strengthBar.style.width='0%';
+                                    prog.style.visibility='visible';
+                                    document.getElementById('strgts').style.visibility='hidden';
+                                    document.getElementById('strgts').style.color='red'
+                                    break;
+
+                            case 1: strengthBar.style.width='40%';
+                                    prog.style.visibility='visible';
+                                    strengthBar.style.backgroundColor='red';
+                                    document.getElementById('strgts').style.visibility='visible';
+                                    document.getElementById('strgts').innerText="Poor";
+                                    document.getElementById('strgts').style.color='red';
+                                    break;
+
+                            case 2: strengthBar.style.width='80%';
+                                    prog.style.visibility='visible';
+                                    strengthBar.style.backgroundColor='orange';
+                                    document.getElementById('strgts').style.visibility='visible';
+                                    document.getElementById('strgts').innerText="Medium";
+                                    document.getElementById('strgts').style.color='orange';
+                                    break;
+                                    
+                            case 3: strengthBar.style.width='100%';
+                                    prog.style.visibility='visible';
+                                    strengthBar.style.backgroundColor='green';
+                                    document.getElementById('strgts').style.visibility='visible';
+                                    document.getElementById('strgts').innerText="Strong";
+                                    document.getElementById('strgts').style.color='green';
+                                    break;
+
+                        }
+
+                      }
+                                  
+        
+        </script>
+</body>
+</html>

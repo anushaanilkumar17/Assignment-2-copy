@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In Form</title>
+    <link rel="stylesheet" href="CSS/login.css">
+  
+</head>
+
+<body background="ALL IMAGES/loginbg 1.jpg">
+    
+    <h1><img src="ALL IMAGES/loginlogo.png" alt="logo" height="70" width="90"></h1>
+    
+    <div class="container">
+        
+      <header>User Login Form</header>
+        
+        <form action="welcome.html" onsubmit=" return validate()"> 
+    
+            <div class="input-field">
+                <input type="text" placeholder="Email ID" id="email">
+                <span id="emailerror"></span><br><br>
+            </div>
+
+            <br>
+
+            <div class="input-field">
+                <input id= "password" type="password" placeholder="Password"> 
+                <span id="pwderror"></span><br><br>
+            </div>
+           
+            <br>
+    
+            <div class="button">
+                <div class="inner"></div>
+                <button id="submit">LOG IN</a></a></button>
+            </div>
+            
+            <br>
+            <br>
+            
+            <div class="auth">
+                <h5>Not a member?</h5>
+                <a href="signup.html">Sign up now</a>
+            </div>
+       
+        </form>
+
+     
+<!--------------------------------------------------JS Function(Validation)----------------------------------------------------->
+
+        <script>
+           
+            let email = document.getElementById("email");
+            let pwd = document.getElementById("password");
+    
+        
+            function validate() {
+                  
+             let emailcheck = /^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]+).([a-z]{2,3})(.[a-z]{2,3}?)$/;
+             let pwdcheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+ //email validation starts here//
+
+                if (emailcheck.test(email.value)){
+                    document.getElementById('emailerror').innerHTML="";
+                }
+
+                else{
+                    document.getElementById('emailerror').innerHTML="**Email ID is Invalid**";
+                    document.getElementById('emailerror').style.color = "red";
+                    document.getElementById('emailerror').style.fontSize = "12px";
+                    document.getElementById('emailerror').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+                    return false;
+                }
+
+ //password validation starts here//
+
+                if (pwdcheck.test(pwd.value)){
+                    document.getElementById('pwderror').innerHTML="";
+                }
+
+                else{
+                    document.getElementById('pwderror').innerHTML="**Password is Invalid";
+                    document.getElementById('pwderror').style.color = "red";
+                    document.getElementById('pwderror').style.fontSize = "12px";
+                    document.getElementById('pwderror').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+                    return false;
+                }
+            }
+
+        </script>
+</body>
+</html>
+
+                
+
+            
+            
+            <!-- //email validation//
+
+
+            //     if (email.value == "") {
+            //     document.getElementById('email').innerHTML = " **Please enter a valid email id**";
+            //     document.getElementById('email').style.color = "black";
+            //     document.getElementById('email').style.fontSize = "14px";
+            //     document.getElementById('email').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+            //     return false;
+            //     }
+
+            //     else if(emailregexp.test(email.value)){
+            //     error.innerHTML = "***Email ID is Valid***";
+            //     error.style.color ="green";
+            //     error.style.fontSize = "14px";
+            //     error.style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+            //     }
+
+            //     else {
+            //     error.innerHTML = "**Email ID is Invalid**";
+            //     error.style.color ="red";
+            //     error.style.fontSize = "14px";
+            //     error.style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+            //     return false;
+            //    }
+
+
+               //password validation//
+
+
+            //     if (pwd.value == "") {
+            //     document.getElementById('pwds').innerHTML = " **Please enter a valid password**";
+            //     document.getElementById('pwds').style.color = "red";
+            //     document.getElementById('pwds').style.fontSize = "14px";
+            //     document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif"
+            //     return false;
+            //     }
+
+            //     else if ((pwd.value.length <8) || (pwd.value.length >20 )) {
+            //     document.getElementById('pwds').innerHTML = "*Atleast 8 characters*";
+            //     document.getElementById('pwds').style.color = "red";
+            //     document.getElementById('pwds').style.fontSize = "12px";
+            //     document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+            //     return false;
+            //     }
+
+            //     else if (pwd.value.search (/[0-9]/) ==-1) {
+            //     document.getElementById('pwds').innerHTML = " *Atleast one number*";
+            //     document.getElementById('pwds').style.color = "red";
+            //     document.getElementById('pwds').style.fontSize = "12px";
+            //     document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+            //     return false;
+            //     }
+
+            //     else if (pwd.value.search (/[a-z]/) ==-1) {
+            //     document.getElementById('pwds').innerHTML = " *Atleast one lowercase letter*";
+            //     document.getElementById('pwds').style.color = "red";
+            //     document.getElementById('pwds').style.fontSize = "12px";
+            //     document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+            //     return false;
+            //     }
+
+            //     else if (pwd.value.search (/[A-Z]/) ==-1) {
+            //     document.getElementById('pwds').innerHTML = " *Atleast one uppercase letter*";
+            //     document.getElementById('pwds').style.color = "red";
+            //     document.getElementById('pwds').style.fontSize = "12px";
+            //     document.getElementById('pwds').style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
+            //     return false;
+            //     }
+
+            //     document.getElementById('pwds').innerHTML = " **Login Successfull**";
+            //     document.getElementById('pwds').style.color = "green";
+            //     document.getElementById('pwds').style.fontSize = "13px";
+            //     return true;
+             -->
